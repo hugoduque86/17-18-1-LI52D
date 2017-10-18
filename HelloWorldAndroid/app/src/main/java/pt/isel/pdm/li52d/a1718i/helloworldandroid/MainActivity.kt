@@ -3,6 +3,7 @@ package pt.isel.pdm.li52d.a1718i.helloworldandroid
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
