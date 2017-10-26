@@ -1,7 +1,8 @@
-package pdm.isel.pt.yamda
+package pdm.isel.pt.yamda.view
 
 import android.app.Activity
 import android.os.Bundle
+import pdm.isel.pt.yamda.R
 
 class MovieInfo : Activity() {
 

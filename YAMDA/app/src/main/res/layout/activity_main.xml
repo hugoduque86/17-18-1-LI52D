@@ -8,7 +8,7 @@
     android:layout_margin="32dp"
     android:id="@+id/teste"
     android:orientation="vertical"
-    tools:context="pdm.isel.pt.yamda.MainActivity">
+    tools:context="pdm.isel.pt.yamda.view.MainActivity">
 
 
         <EditText
