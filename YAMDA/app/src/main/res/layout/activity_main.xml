@@ -15,21 +15,31 @@
             android:id="@+id/movie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Movie Title" />
+            android:hint="Movie Title"
+            android:layout_margin="8dp"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_margin="8dp"
             android:id="@+id/search"
-            android:text="Search"/>
+            android:text="Search"
+            android:onClick="search"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:text="Upcoming"
+            android:layout_margin="8dp"
+            android:onClick="search"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="search"
+            android:layout_margin="8dp"
             android:text="Now Playing"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:onClick="search"
+            android:layout_margin="8dp"
             android:text="Popular"/>
 </LinearLayout>

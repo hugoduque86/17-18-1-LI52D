@@ -1,18 +1,26 @@
 package pdm.isel.pt.yamda.view
 
-import android.app.Activity
 import android.app.ListActivity
+import android.content.Context
+
+import android.content.Intent
+import android.content.Intent.EXTRA_TEXT
+
 import android.os.Bundle
-import android.view.LayoutInflater
+
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.ListView
+import android.widget.Toast
+
 import pdm.isel.pt.yamda.R
+import pdm.isel.pt.yamda.domain.model.MovieSearch
+import pdm.isel.pt.yamda.domain.operations.MovieAppOperations
+import pdm.isel.pt.yamda.utils.HttpRequest
+import pdm.isel.pt.yamda.view.adapters.MovieListAdapter
 
 class MovieList : ListActivity() {
 
-   val test : Array<String> = arrayOf("a","v","de")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +32,29 @@ class MovieList : ListActivity() {
             j.text = i
             list.addView(j)
         }*/
-        listView.emptyView=layoutInflater.inflate(R.layout.empty_list,root,true)
+
+        HttpRequest.CheckConection(this){Toast.makeText(this,"No Internet",Toast.LENGTH_SHORT).show()
+        finish()}
+
+        listView.emptyView=layoutInflater.inflate(R.layout.empty_list,null ,false)
+        root.addView(listView.emptyView)
+        MovieAppOperations.getMovies(intent.extras[EXTRA_TEXT] as String , intent.extras["TypeOfQuery"] as String){
+            listAdapter=MovieListAdapter(it,
+                    {it.title},
+                    {it.poster},
+                    {it.posterUrl},
+                    layoutInflater)
+        }
 
     }
+
+    override fun onListItemClick(l: ListView?, v: View?, position: Int, id: Long) {
+        var intent = Intent(this,MovieInfo::class.java!!)
+        intent.putExtra("Item",(listAdapter.getItem(position) as MovieSearch).id )
+        startActivity(intent)
+    }
+
+
 }
+
+

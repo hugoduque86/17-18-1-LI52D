@@ -21,5 +21,6 @@ class InternalActivity : Activity() {
 
         val adapter: TeamAdapter = TeamAdapter(SoccerRepository.getTeams(), layoutInflater)
         listView.adapter = adapter
+
     }
 }

@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/movieList"
-    tools:context="pdm.isel.pt.yamda.view.MovieList">
+    tools:context=".view.MovieList"
+   >
+
 
 
 </LinearLayout>

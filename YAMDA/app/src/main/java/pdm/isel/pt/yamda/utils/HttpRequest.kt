@@ -1,9 +1,13 @@
 package pdm.isel.pt.yamda.utils
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.ConnectivityManager
+import android.net.Network
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import com.android.volley.*
 import com.android.volley.toolbox.ImageRequest
 import com.android.volley.toolbox.StringRequest
@@ -16,13 +20,14 @@ object HttpRequest{
     val TAG = HttpRequest::class.simpleName!!
     private var queue: RequestQueue? = null
     fun init (ctx : Context) {
-        queue = Volley.newRequestQueue(ctx);
+        queue = Volley.newRequestQueue(ctx)
 
     }
 
     fun get(url: String, res: (String) -> Unit): Unit {
         val stringRequest = StringRequest(Request.Method.GET,url,
-                Response.Listener<String>{response : String -> res(response)
+                Response.Listener<String>{
+                    res(it)
                 }, Response.ErrorListener { requestError(it) })
 
         queue?.add(stringRequest);
@@ -41,6 +46,16 @@ object HttpRequest{
     }
 
     private fun requestError(error: VolleyError) {
+
         Log.e(TAG, "The Http response could not be obtained because of the following error: $error")
     }
+
+    fun CheckConection(ctx: Activity,function: () -> Unit)  {
+        if((ctx.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo==null)
+            function()
+        return
+
+    }
+
+
 }
