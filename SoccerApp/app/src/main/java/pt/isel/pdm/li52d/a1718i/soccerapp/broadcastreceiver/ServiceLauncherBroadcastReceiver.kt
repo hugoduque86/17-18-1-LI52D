@@ -9,8 +9,8 @@ import pt.isel.pdm.li52d.a1718i.soccerapp.service.ResultsService
 /**
  * Created by lfalcao on 08/11/2017.
  */
-class ServiceLaucherBroadcastReceiver : BroadcastReceiver() {
-    val TAG: String = ServiceLaucherBroadcastReceiver::class.simpleName!!;
+class ServiceLauncherBroadcastReceiver : BroadcastReceiver() {
+    val TAG: String = ServiceLauncherBroadcastReceiver::class.simpleName!!;
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.i(TAG, "Broadcast receiver onReceive called with intent $intent")
 
